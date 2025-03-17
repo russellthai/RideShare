@@ -1,4 +1,7 @@
 package RideShare;
+
+import java.util.ArrayList;
+
 public class Road {
     //fields
     private Station[] stations;
@@ -7,9 +10,10 @@ public class Road {
 
     //constructors
 
-    public Road (Station [] mystations, ArrayList<Car> mycars){
-        for(int i= 0; i< stations.length;i++){
-            stations[i] = new Station (i);
+    public Road(){
+        Station [] mystations = new Station[NUMSTATIONS];
+        for(int i= 0; i<NUMSTATIONS;i++){
+            stations[i] = new Station(i);
         }
        cars = new ArrayList<Car>();
     }
@@ -49,7 +53,7 @@ public void populateCars(int numCars){
     }
 
     /*
-     * This is the big method that moves all cars, unloads and loads passengers fro one 'tick'
+     * This is the big method that moves all cars, unloads and loads passengers for one 'tick'
      */
     public void move(){
         //unload all eligible people from cars to stations
@@ -63,14 +67,44 @@ public void populateCars(int numCars){
                 break;
             }
         }
-        }
+    }
         //load all people from stations to cars
+        for(Car c: cars){
+            if(c.getDirection()){
+                if(stations[c.getLocation()].noRemoveNextRight() != null){
+                    c.addPassenger(stations[c.getLocation()].nextRight());
+                }
+            } else {
+                if(stations[c.getLocation()].noRemoveNextLeft() != null){
+                    c.addPassenger(stations[c.getLocation()].nextLeft());
+                }
+            }
+        }
         //going to similar, but now looping through the stations and putting in cars
-        
+        for(int i = 0; i < NUMSTATIONS; i++){
+            System.out.println("Stage: " + i);
+            System.out.println();
+        }
 
         //move all the cars
         for(Car c: cars){
             c.move();
         }
+    }
+
+    public int getCompleted(){
+        int count = 0;
+        for(Station s: stations){
+            count += s.completedCount();
+        }
+        return count;
+    }
+
+    public int getWaiting(){
+        int count = 0;
+        for(Station s: stations){
+            count += s.waitingCount();
+        }
+        return count;
     }
 }

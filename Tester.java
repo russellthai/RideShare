@@ -11,10 +11,6 @@ public class Tester {
         System.out.println("-----------");
         System.out.println(r.toString());
 
-
-
-
-
         Person a = new Person(5, 7);
         Person b = new Person(2,0);
         Person c = new Person(10,24);
@@ -26,5 +22,16 @@ public class Tester {
         n.addPassenger(a);
         System.out.println(n);
         System.out.println(n.unload());
+
+
+        for(int i = 0; i<32; i++){
+            r.move();
+        }
+
+        System.out.println(r.toString());
+        System.out.println("Total number of passengers that got to their destination: "+ r.getCompleted());
+        System.out.println("Total number of passengers that didn't get to their destination: " + r.getWaiting());
+   
+
     }
 }

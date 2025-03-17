@@ -5,6 +5,7 @@ public class Car {
 
     //fields
     private int destination;
+    private int startingLoc;
     private int currentLocation;
     private boolean direction; //true for right, false for left
     private ArrayList<Person> passengers;
@@ -13,6 +14,7 @@ public class Car {
     //constructors
     public Car (int myDestination, int start){
         destination = myDestination;
+        startingLoc = start;
         currentLocation = start;
         direction = destination > currentLocation;
         passengers = new ArrayList<Person>();
@@ -65,5 +67,9 @@ public class Car {
 
     public int getLocation(){
         return currentLocation;
+    }
+
+    public boolean getDirection(){
+        return destination>startingLoc;
     }
 }

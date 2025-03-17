@@ -1,4 +1,5 @@
 package RideShare;
+import java.util.*;
 public class Station {
     //fields
     private ArrayList<Person> waitingLeft;
@@ -33,6 +34,14 @@ public class Station {
         }
     }
 
+    public Person noRemoveNextLeft(){
+        if(waitingLeft.size()>0){
+            return waitingLeft.get(0);
+        } else {
+            return null;
+        }
+    }
+
     public Person nextRight(){
         if(waitingRight.size()>0){
             return waitingRight.remove(0);
@@ -40,6 +49,15 @@ public class Station {
             return null;
         }
     }
+
+    public Person noRemoveNextRight(){
+        if(waitingRight.size()>0){
+            return waitingRight.get(0);
+        } else {
+            return null;
+        }
+    }
+
 
     public int completedCount(){
         return completed.size();
@@ -54,6 +72,13 @@ public class Station {
         System.out.println();
         s += "Completed: " + completed.toString();
         System.out.println();
+        return s;
     }
 
-}
+    public int waitingCount(){
+        int count = 0;
+        count = count + waitingLeft.size() + waitingRight.size();
+        return count;
+        }
+    }
+
