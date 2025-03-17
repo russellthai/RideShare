@@ -11,7 +11,7 @@ public class Road {
     //constructors
 
     public Road(){
-        Station [] mystations = new Station[NUMSTATIONS];
+        stations = new Station[NUMSTATIONS];
         for(int i= 0; i<NUMSTATIONS;i++){
             stations[i] = new Station(i);
         }
@@ -23,8 +23,8 @@ public class Road {
     //make stations
 public void populateStations(int numPeople){
     for (int i=0; i<numPeople; i++){
-        int start = (int)(Math.random())*(NUMSTATIONS);
-        int stop = (int)(Math.random())* (NUMSTATIONS);
+        int start = (int)(Math.random()*(NUMSTATIONS));
+        int stop = (int)(Math.random()* (NUMSTATIONS));
         stations[start].addPerson(new Person(stop,start));
     }
 
@@ -58,8 +58,8 @@ public void populateCars(int numCars){
     public void move(){
         //unload all eligible people from cars to stations
         for (Car c : cars){
-            Person p = c.unload(); //this gives an eligible person to remove or null
             while (true){
+            Person p = c.unload(); //this gives an eligible person to remove or null
             if (p!=null){
                 int location = c.getLocation();
                 stations[location].addPerson(p);
@@ -70,21 +70,24 @@ public void populateCars(int numCars){
     }
         //load all people from stations to cars
         for(Car c: cars){
+            while (true){
             if(c.getDirection()){
                 if(stations[c.getLocation()].noRemoveNextRight() != null){
                     c.addPassenger(stations[c.getLocation()].nextRight());
+                }
+                else{
+                    break;
                 }
             } else {
                 if(stations[c.getLocation()].noRemoveNextLeft() != null){
                     c.addPassenger(stations[c.getLocation()].nextLeft());
                 }
+                else {
+                    break;
+                }
             }
         }
-        //going to similar, but now looping through the stations and putting in cars
-        for(int i = 0; i < NUMSTATIONS; i++){
-            System.out.println("Stage: " + i);
-            System.out.println();
-        }
+    }
 
         //move all the cars
         for(Car c: cars){
