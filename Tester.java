@@ -5,8 +5,8 @@ public class Tester {
     public static void main(String[] args) {
         Road r = new Road();
         System.out.println(r.toString());
-        r.populateCars(5);
-        r.populateStations(10);
+        r.populateCars(40);
+        r.populateStations(50);
         System.out.println("-----------");
         System.out.println(r.toString());
         for(int i = 0; i<32; i++){
