@@ -1,0 +1,33 @@
+There are around 8 people when I had 20 cars
+to pick up the 50 passengers
+
+There are around 22 people when I had 40 cars 
+to pick up the 50 passengers
+
+I got an overall higher percentage of passengers
+that made it to their final location when I had 
+more cars which logically makes sense when I 
+ran the simulation
+
+To do this project, I created a person and car 
+class which served as my primary backbones
+
+Then I also used a station class where I could 
+do the first part where I had to add people to 
+the stations so that they could be picked up
+
+Then all the heavy lifting was done in the road 
+class.
+That is where I had the cars picking up the people.
+
+Then my tester file was very light.
+
+
+I think this project was very good for my understadning.
+I learned a lot from this frustrating but rewarding process
+While the project might not be perfect, I am very
+proud that I got to as close as I could with the 
+help of Mr. Rosato
+I am really proud of the roadbumps I overcame 
+like truly understanding what a null pointer exception
+error is or the something as simple as fixing typos
